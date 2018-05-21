@@ -9,11 +9,26 @@ while len(s) > 0:
     if(ren != "dream"):
       flg = 1
       break
-    elif(ren == "dream" and len(s) > 7):
-      if(s[5:7]=="er"):
-        s = s[7:]
+    elif(ren == "dream"):
+      if(len(s) > 8):
+        if(s[5:7]=="er"):
+          if(s[8] == "a"):
+            s = s[5:]
+          else:
+            s = s[7:]
+        else:
+          s = s[5:]
+      elif(len(s) == 7):
+        if(s[5:7] == "er"):
+          flg = 0
+          break
+        else:
+          flg = 1
+          break
+      elif(len(s) == 5):
+        s = [5:]
       else:
-        s = s[5:]
+        break
     else:
       s = s[5:]
   elif(head == "e"):
