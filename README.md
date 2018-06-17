@@ -9,3 +9,4 @@ atcoderの個人的記録用リポジトリ
 ## agc025:2018/06/03 Atcoder Grand Contest 025 score:200
 c1...TLE c2...WA
 ## abc099:2018/06/10 Atcoder Beginner Contest 099 score:300
+## abc100:2018/06/16 Atcoder Beginner Contest 100 score:200
