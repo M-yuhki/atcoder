@@ -1,53 +1,31 @@
+def check(s):
+  a = len(s)
+  x = False
+  if(a == 0):
+    x = True
+  elif(a == 5):
+    if(s == "dream" or s == "erase"):
+      x = True
+  elif(a == 6):
+    if(s == "eraser"):
+      x = True
+  elif(a == 7):
+    if(s == "dreamer"):
+      x = True
+  elif(a > 9):
+    if(s[-5:] == "dream" or s[-5:] == "erase"):
+      x = check(s[:-5])
+    elif(s[-6:] == "eraser"):
+      x = check(s[:-6])
+    elif(s[-7:] == "dreamer"):
+      x = check(s[:-7])
+  return x
+
 s = input()
-print(s)
-flg = 0
 
-while len(s) > 0:
-  head=s[0]
-  if(head == "d"):
-    ren = s[0:5]
-    if(ren != "dream"):
-      flg = 1
-      break
-    elif(ren == "dream"):
-      if(len(s) > 8):
-        if(s[5:7]=="er"):
-          if(s[8] == "a"):
-            s = s[5:]
-          else:
-            s = s[7:]
-        else:
-          s = s[5:]
-      elif(len(s) == 7):
-        if(s[5:7] == "er"):
-          flg = 0
-          break
-        else:
-          flg = 1
-          break
-      elif(len(s) == 5):
-        s = [5:]
-      else:
-        break
-    else:
-      s = s[5:]
-  elif(head == "e"):
-    ren = s[0:5]
-    if(ren != "erase"):
-      flg = 1
-      break
-    elif(ren == "erase" and len(s) > 6):
-      if(s[5] == "r"):
-        s = s[6:]
-      else:
-        s = s[5:]
-    else:
-      s = s[6:]  
-  else:
-    flg = 1
-    break
-
-if(flg == 1):
-  print("No")
+if(check(s)):
+  print("YES")
 else:
-  print("Yes") 
+  print("NO")
+
+
