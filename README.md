@@ -30,4 +30,5 @@ agc026:2018/07/14 AtCoder Grand Contest 026 score:200
 ## others
 sh:2018/07/08 SoundHound Inc. Programming Contest 2018 score:300  
 tpbc:2018/10/27 Tenka1 Programming Beginner Contest score:300 
-dwng:2018/11/24 Dwango Programming Contest V score:
+dwng:2018/11/24 Dwango Programming Contest V score:200
+exa:2019/03/30 EXAWIZARDS 2019 score:300
