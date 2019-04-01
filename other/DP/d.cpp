@@ -23,31 +23,29 @@ template<class T> inline bool chmax(T& a, T b) {
 // 入力
 int N;
 int W;
-long long a[100010][2];
+long long w[110];
+long long v[110];
 int f;
 
 // DP テーブル
-long long dp[100010];
+long long dp[110][100010] = {0};
 
 int main() {
     cin >> N >> W;
-    for (int i = 0; i < N; ++i) cin >> a[i][0] >> a[i][1];
-
-    // 初期化
-    for (int i = 0; i < 100010; ++i) dp[i] = 0;
+    for (int i = 0; i < N; ++i) cin >> w[i] >> v[i];
 
     // ループ
-    for (int i = 1; i < N+1; ++i) {
-      chmax(dp[i][0],dp[i-1][1] + a[i-1][0]);
-      chmax(dp[i][0],dp[i-1][2] + a[i-1][0]);
-      chmax(dp[i][1],dp[i-1][0] + a[i-1][1]);
-      chmax(dp[i][1],dp[i-1][2] + a[i-1][1]);
-      chmax(dp[i][2],dp[i-1][0] + a[i-1][2]);
-      chmax(dp[i][2],dp[i-1][1] + a[i-1][2]);
-    
+    for (int i = 0; i < N; ++i) {
+      for (int j = 0; j <= W; ++j){
+        if(j - w[i] >= 0){
+          chmax(dp[i+1][j],dp[i][j-w[i]] + v[i]);
+          }
+        chmax(dp[i+1][j],dp[i][j]);
+        
+      }
     }
 
     // 答え
-    cout << max({dp[N][0],dp[N][1],dp[N][2]}) << endl;
+    cout << dp[N][W] << endl;
 
 }
