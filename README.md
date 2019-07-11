@@ -1,5 +1,5 @@
 # atcoder
-atcoderの個人的記録用リポジトリ
+atcoderの個人的記録用ゆるふわリポジトリ
 
 ## abs
 AtCoder Beginners Selection  
