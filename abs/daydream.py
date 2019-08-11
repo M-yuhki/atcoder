@@ -1,31 +1,46 @@
-def check(s):
-  a = len(s)
-  x = False
-  if(a == 0):
-    x = True
-  elif(a == 5):
-    if(s == "dream" or s == "erase"):
-      x = True
-  elif(a == 6):
-    if(s == "eraser"):
-      x = True
-  elif(a == 7):
-    if(s == "dreamer"):
-      x = True
-  elif(a > 9):
-    if(s[-5:] == "dream" or s[-5:] == "erase"):
-      x = check(s[:-5])
-    elif(s[-6:] == "eraser"):
-      x = check(s[:-6])
-    elif(s[-7:] == "dreamer"):
-      x = check(s[:-7])
-  return x
-
 s = input()
 
-if(check(s)):
+p = len(s)
+c = p
+
+flg = True
+
+while c > 0:
+  tflg = True
+  if(c <= 4):
+    flg = False
+    break
+
+  if(c >= 7):
+    tar = s[c-7:c]
+    if(tar == "dreamer"):
+      c -= 7
+      tflg = False
+  
+  if(c >= 6):
+    tar = s[c-6:c]
+    if(tar == "eraser"):
+      c -= 6
+      tflg = False
+
+  if(c >= 5):
+    tar = s[c-5:c]
+    if(tar == "dream" or tar == "erase"):
+      c -= 5
+      tflg = False
+
+  if(tflg):
+    flg = False
+    break
+
+
+if(flg):
   print("YES")
 else:
   print("NO")
+
+
+
+
 
 
