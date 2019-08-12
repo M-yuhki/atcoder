@@ -1,41 +1,39 @@
 n = int(input())
-x = []
-y = []
-h = []
+s = []
+
 for i in range(n):
-   a,b,c = map(int,input().split())
-   x.append(a)
-   y.append(b)
-   h.append(c)
-   
-ans = [-1,-1,-1]
-h_c = 0
+  s.append(list(map(int,input().split())))
 
-p = -1
+ans_x = -1
+ans_y = -1
+ans_h = -1
 
-for i in range(len(h)):
-  if(h.count(h[i]) >= 3):
-    p = h[i]
+for i in s:
+  if(i[2] > 0):
+    check_x,check_y,check_h = i
     break
 
+for x in range(101):
+  for y in range(101):
+    flg = True
+    H = check_h + abs(check_x - x) + abs(check_y - y)
+    if(H <= 0):
+      flg = False
+      break
 
-if(p != -1):
-  filed=[[0,0,0],[0,0,0],[0,0,0]]
-  for i in range(3):
-    t = c.index(p)
-    field[i][0] = x[t]
-    field[i][1] = y[t]
+    else:
+      for i in range(n):
+        h = max( ( H - abs(s[i][0] - x) - abs(s[i][1] - y) ) ,0) 
+        if(h != s[i][2]):
+          flg = False
+          break
+    if flg:
+      ans_y = y
+      ans_h = H
+      break
 
-  if(field[0][0] == filed[1][0]):
-    ans = [field[0][0],field[2][1],p + int(abs(filed[0][1] - field[1][1])/2)]
-  elif(field[0][0] == filed[2][0]):
-    ans = [field[0][0],field[1][1],p + int(abs(filed[0][1] - field[2][1])/2)]
-  else:
-    ans = [field[1][0],field[0][1],p + int(abs(filed[1][1] - field[2][1])/2)]
+  if flg:
+    ans_x = x
+    break
 
-
-
-
-
-
-
+print("{} {} {}".format(ans_x,ans_y,ans_h))
