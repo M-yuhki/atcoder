@@ -1,41 +1,27 @@
 n = int(input())
-a = list(map(int, input().split()))
-
-p = a[0]
-q = 0
-
-now_len = 1
-max_len = 1
-max_p = p
-max_q = 0
-total = p
-
-for i in range(n - 1):
-    total += a[i + 1]
-    t = a[i + 1] - a[i]
-    if(t == 1):
-        now_len += 1
-    else:
-        if(max_len < now_len):
-            max_len = now_len
-            max_p = p
-            max_q = q
-        now_len = 1
-        p = a[i + 1]
-        q = i + 1
-
-if(max_len < now_len):
-    max_len = now_len
-    max_p = p
-    max_q = q
-
-ans = 0
-
-b = max_p - max_q
-if(max_p == a[0] and max_len == 1):
-    b = int(total / n) - int(n / 2)
+a = list(map(int,input().split()))
 
 for i in range(n):
-    ans += abs(a[i] - (b + i))
+  a[i] -= (i + 1)
 
-print(ans)
+
+a.sort()
+
+if(n%2 == 1):
+  b = a[int(n/2)]
+
+else:
+  t = 0
+  for i in a:
+    t += abs(i)
+  ave = t/n
+
+  p = int(n/2)
+  if(abs(a[p] - ave) <= abs(a[p-1] -ave)):
+    b = a[p]
+  else:
+    b = a[p-1]
+
+k = list(map(lambda x:abs(x-b),a))
+
+print(sum(k))
