@@ -10,19 +10,12 @@
 #define ARRAY_LEN(ARR) (sizeof(ARR) / sizeof((ARR)[0]))
 using namespace std;
 int main(void){
-  int d,g;
-  cin >> d >> g;
-
-  vector<int> score;
-  vector<float> cospa;
-  int p,c,total;
-  REP(i,d){
-    cin >> p >> c;
-    score.push_back(i*100*p+c);
-    cospa.push_back(score[i]/p);
-  }
-
-  less = 
-
+  int a,b,c;
+  cin >> a >> b >> c;
+  int ans;
+  ans = max({a,b,c})*9 + a + b + c;
+  cout << ans << endl;
 
 }
+
+
