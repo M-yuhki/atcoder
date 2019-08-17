@@ -23,19 +23,22 @@ int main(void){
      ttos[i] = -1;
   }
   REP(i,s.length()){
-    int sp,tp;
-    sp = (unsigned char)s[i] - 97;
-    tp = (unsigned char)t[i] - 97;
-    cout << sp << ":" << tp << endl;    
-    if(stot[sp] < 0 and ttos[sp] < 0){
-      stot[sp] = tp;
-      ttos[tp] = sp;
+    int x,y;
+    x = (unsigned char)s[i] - 97;
+    y = (unsigned char)t[i] - 97;
+    if(stot[x] < 0){
+      stot[x] = y;
     }
-    else if(stot[sp] != tp || ttos[tp] != sp){
+    else if(stot[x] != y){
       flg = false;
-      break;
     }
 
+    if(ttos[y] < 0){
+      ttos[y] = x;
+    }
+    else if(ttos[y] != x){
+      flg = false;
+    }
 
   }
   if(flg) cout << "Yes" << endl;
