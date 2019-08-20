@@ -1,32 +1,46 @@
+import bisect
+import sys
+sys.setrecursionlimit(10**7)
+
 s = input()
-t = input() # 逆向き
+t = input()
 
-p = 0
-b = len(s) - 1
-c = 0
-flg = True
-for i in t:
-  while True:
-    if(i == s[p]):
-      b = p
-      p += 1
-      if(p == len(s)):
-        c += 1
-        p = 0
-      break  
+abc = "abcdefghijklmnopgrstuvwxyz"
 
-    elif(b == p):
-      flg = False
-      break
+p = {}
 
-    p += 1
-    if(p == len(s)):
-      p = 0
-      c += 1
+for i in abc:
+  p[i] = []
+
+for i in range(len(s)):
+  p[s[i]].append(i)
   
-  if(not(flg)):
+for i in abc:
+  p[i].sort()
+
+l = 0
+c = -1
+
+flg = True
+
+for i in t:
+  tar = p[i]
+  if(len(tar) == 0):
+    flg = False
     break
+  index = bisect.bisect_left(tar,c)
+
+  if(index == len(tar)):
+    index = 0
+    l += 1
+
+  elif(c == tar[index]):
+    l += 1
+  c = tar[index]
+
+
 if(flg):
-  print(c*len(s) + p)
+  print(l*len(s) + c + 1)
+
 else:
-  print(-1)
+  print("-1")
